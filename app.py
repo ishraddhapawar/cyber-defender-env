@@ -5,7 +5,7 @@ import os
 # Ensure models can be imported from root
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from models import ActionRequest, ResetRequest, ResetResponse, StepResponse, State
-from environment import CyberEnvironment
+from server.environment import CyberEnvironment
 
 app = FastAPI(title="OpenEnv - Cyber Security Environment")
 env = CyberEnvironment(max_steps=100)
@@ -21,3 +21,10 @@ def step_env(req: ActionRequest):
 @app.get("/state", response_model=State)
 def get_state():
     return env.state_info()
+
+def main():
+    import uvicorn
+    uvicorn.run("server.app:app", host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    main()
