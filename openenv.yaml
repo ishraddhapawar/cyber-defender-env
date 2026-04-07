@@ -1,0 +1,20 @@
+version: '1.0'
+environment:
+  name: "CyberSecurityEnv"
+  description: "Autonomous Intrusion Response Environment for SOC mitigation tasks."
+  author: "Sushil M"
+  tags:
+    - cybersecurity
+    - reinforcement-learning
+  version: "1.0.0"
+
+tasks:
+  - id: "easy"
+    description: "Obvious single active threat. Agent must block."
+  - id: "medium"
+    description: "Subtle threat with false positives. Agent must scan before deciding."
+  - id: "hard"
+    description: "Multi-factor fast-acting threat. Strict bounds on health limits."
+
+docker:
+  port: 7860
